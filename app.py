@@ -1,10 +1,14 @@
 from flask import Flask
+from redis import Redis
+
 app = Flask(__name__)
+redis = Redis(host='redis', port=6379)
 
 
 @app.route('/')
 def hello():
-    return "Hello 🇺🇾!"
+    redis.incr('hits')
+    return f"Montevideo Web Developers x{int(redis.get('hits'))}⚡️"
 
 
 if __name__ == '__main__':
