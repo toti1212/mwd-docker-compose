@@ -6,10 +6,10 @@ services:
       - 80:80
     depends_on:
       - web
-    env_file: ./testing.env
   web:
     image: docker.pkg.github.com/toti1212/mwd-docker-compose/flask-backend:testing-latest
     command: gunicorn --bind 0.0.0.0:5000 wsgi:app
+    env_file: ./testing.env
     ports:
     - 5000
     links:

@@ -11,7 +11,7 @@ redis = Redis(host='redis', port=6379)
 def hello():
     redis.incr('hits')
     app.logger.debug("Un logger que debería de apagar")
-    return f"Montevideo Web Developers x{int(redis.get('hits'))}⚡️"
+    return f"Hola Montevideo Web Developers x{int(redis.get('hits'))}⚡️"
 
 
 if __name__ == '__main__':

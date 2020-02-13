@@ -14,7 +14,6 @@ COPY /backend/requirements.txt .
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN pip install gunicorn
 
 # copy project
 COPY /backend $APP_HOME
