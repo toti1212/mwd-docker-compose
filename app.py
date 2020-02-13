@@ -7,6 +7,7 @@ redis = Redis(host='redis', port=6379)
 
 @app.route('/')
 def hello():
+    app.logger.debug("Un logger que debería de apagar")
     redis.incr('hits')
     return f"Montevideo Web Developers x{int(redis.get('hits'))}⚡️"
 
