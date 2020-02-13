@@ -4,6 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
+    app.logger.debug("Un logger que debería de apagar")
     return "Hello 🇺🇾!"
 
 
