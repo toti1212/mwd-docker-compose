@@ -1,0 +1,23 @@
+FROM python:latest
+
+# create directory for the app user
+RUN mkdir -p /home/app
+
+# create the appropriate directories
+ENV HOME=/home/app
+ENV APP_HOME=/home/app/web
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
+
+# install dependencies
+COPY /backend/requirements.txt .
+
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+RUN pip install gunicorn
+
+# copy project
+COPY /backend $APP_HOME
+
+# change to the app user
+USER 101
